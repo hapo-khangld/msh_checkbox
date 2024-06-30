@@ -18,17 +18,15 @@ class MSHCheckbox extends StatefulWidget {
     Key? key,
     required this.value,
     this.isDisabled = false,
-    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.checkedColor,
-    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.uncheckedColor = const Color(0xFFCCCCCC),
-    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.")
-        this.disabledColor = const Color(0xFFCCCCCC),
+    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.") this.checkedColor,
+    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.") this.uncheckedColor = const Color(0xFFCCCCCC),
+    @Deprecated("Use MSHColorConfig.fromCheckedUncheckedDisabled instead.") this.disabledColor = const Color(0xFFCCCCCC),
     MSHColorConfig? colorConfig,
     this.size = 18,
     this.duration,
     this.style = MSHCheckboxStyle.stroke,
     required this.onChanged,
+    this.shape = BoxShape.circle,
   })  : colorConfig = colorConfig ??
             MSHColorConfig.fromCheckedUncheckedDisabled(
               checkedColor: checkedColor,
@@ -42,6 +40,8 @@ class MSHCheckbox extends StatefulWidget {
 
   /// Whether the checkbox is disabled.
   final bool isDisabled;
+
+  final BoxShape shape;
 
   /// The color of the checkbox when [value] is `true`. If [colorConfig] is
   /// specified, this value will be overridden by [MSHColorConfig.onFillColor].
@@ -78,8 +78,7 @@ class MSHCheckbox extends StatefulWidget {
   State<MSHCheckbox> createState() => _MSHCheckboxState();
 }
 
-class _MSHCheckboxState extends State<MSHCheckbox>
-    with SingleTickerProviderStateMixin {
+class _MSHCheckboxState extends State<MSHCheckbox> with SingleTickerProviderStateMixin {
   double get _strokeWidth => 3.5 * (widget.size / 60);
 
   late final animationController = AnimationController(
@@ -149,7 +148,7 @@ class _MSHCheckboxState extends State<MSHCheckbox>
             width: widget.size + _strokeWidth,
             child: Container(
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
+                shape: widget.shape,
                 border: Border.all(
                   color: widget.colorConfig.borderColor(state),
                   width: _strokeWidth,
