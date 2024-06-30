@@ -19,16 +19,16 @@ class StrokeCheckbox extends StatelessWidget {
         return Stack(
           alignment: Alignment.center,
           children: [
-            Arc(
-              color: parent.tintColor(),
-              startAngle: pi / 4,
-              sweepAngle: parent.animation
-                  .drive(CurveTween(curve: Curves.easeInOutCubic))
-                  .drive(Tween(begin: 0.0, end: 2 * pi))
-                  .value,
-              strokeWidth: parent.strokeWidth,
-              size: parent.size,
-            ),
+            // Arc(
+            //   color: parent.tintColor(),
+            //   startAngle: pi / 4,
+            //   sweepAngle: parent.animation
+            //       .drive(CurveTween(curve: Curves.easeInOutCubic))
+            //       .drive(Tween(begin: 0.0, end: 2 * pi))
+            //       .value,
+            //   strokeWidth: parent.strokeWidth,
+            //   size: parent.size,
+            // ),
             Check(
               color: parent.checkColor(),
               size: parent.size * 0.4,
